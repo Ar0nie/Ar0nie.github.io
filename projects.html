@@ -53,45 +53,44 @@
     </main>
     <footer>
         <div class="container">
-            <p>&copy; 2024 Aron Berger Johannesen. All rights reserved.</p>
         </div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const currentLocation = window.location.pathname;
             const menuItems = document.querySelectorAll('header nav ul li a');
-
+    
             menuItems.forEach(item => {
-                if (item.getAttribute('href') === currentLocation || 
-                    item.getAttribute('href') === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
+                const targetUrl = item.getAttribute('href');
+    
+                if (targetUrl === currentLocation || 
+                    targetUrl === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
                     item.classList.add('active');
                 }
-            });
-
-            // Only apply slide transition on link click, not on page load
-            menuItems.forEach(item => {
+    
                 item.addEventListener('click', (event) => {
                     event.preventDefault();
-                    const targetUrl = event.currentTarget.getAttribute('href');
-                    
-                    document.body.classList.add('slide-exit');
+    
+                    // Check if the target URL is the same as the current URL
+                    if (targetUrl === currentLocation || 
+                        targetUrl === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
+                        return; // If same, do nothing
+                    }
+    
+                    const mainContent = document.querySelector('main');
+                    mainContent.classList.add('slide-exit-active');
                     window.setTimeout(() => {
                         window.location.href = targetUrl;
                     }, 500);
                 });
             });
-
-            // Slide enter effect
-            window.addEventListener('pageshow', (event) => {
-                if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
-                    document.body.classList.remove('slide-enter-active', 'slide-exit-active');
-                    document.body.classList.add('slide-enter');
-                    window.setTimeout(() => {
-                        document.body.classList.remove('slide-enter');
-                        document.body.classList.add('slide-enter-active');
-                    }, 1);
-                }
-            });
+    
+            const mainContent = document.querySelector('main');
+            mainContent.classList.add('slide-enter');
+            window.setTimeout(() => {
+                mainContent.classList.remove('slide-enter');
+                mainContent.classList.add('slide-enter-active');
+            }, 1);
         });
     </script>
 </body>
