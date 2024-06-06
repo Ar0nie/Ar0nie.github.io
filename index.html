@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Home</title>
 </head>
 <body>
     <header>
@@ -47,10 +48,36 @@
         document.addEventListener('DOMContentLoaded', function () {
             const currentLocation = window.location.pathname;
             const menuItems = document.querySelectorAll('header nav ul li a');
+
             menuItems.forEach(item => {
                 if (item.getAttribute('href') === currentLocation || 
                     item.getAttribute('href') === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
                     item.classList.add('active');
+                }
+            });
+
+            // Only apply slide transition on link click, not on page load
+            menuItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetUrl = event.currentTarget.getAttribute('href');
+                    
+                    document.body.classList.add('slide-exit');
+                    window.setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500);
+                });
+            });
+
+            // Slide enter effect
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                    document.body.classList.remove('slide-enter-active', 'slide-exit-active');
+                    document.body.classList.add('slide-enter');
+                    window.setTimeout(() => {
+                        document.body.classList.remove('slide-enter');
+                        document.body.classList.add('slide-enter-active');
+                    }, 1);
                 }
             });
         });

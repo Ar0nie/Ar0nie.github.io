@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Projects</title>
 </head>
 <body>
     <header>
@@ -22,15 +23,28 @@
     <main>
         <section id="projects" class="section">
             <div class="container">
-                <h2>Projects</h2>
-                <div class="project-grid">
+                <h2 id="contact-me">My Projects.</h2>
+                <div class="project-cards">
                     <div class="project-card">
-                        <h3>Project 1</h3>
-                        <p>Description of project 1...</p>
+                        <a href="https://github.com/Ar0nie/project1" class="project-link" target="_blank">
+                            <img src="packMateAlphaLogo.png" alt="Project 1">
+                            <h3>PackMate</h3>
+                            <p>Click on me!</p>
+                        </a>
                     </div>
                     <div class="project-card">
-                        <h3>Project 2</h3>
-                        <p>Description of project 2...</p>
+                        <a href="https://github.com/Ar0nie/Website" class="project-link" target="_blank">
+                            <img src="github.png" alt="Project 2">
+                            <h3>This website!<span class="emoji">😲</span></h3>
+                            <p>Click on me!</p>
+                        </a>
+                    </div>
+                    <div class="project-card">
+                        <a href="https://github.com/Ar0nie/project3" class="project-link" target="_blank">
+                            <img src="github.png" alt="Project 3">
+                            <h3>To be added...</h3>
+                            <p>Do not click on me!😠</p>
+                        </a>
                     </div>
                     <!-- Add more project cards as needed -->
                 </div>
@@ -46,14 +60,39 @@
         document.addEventListener('DOMContentLoaded', function () {
             const currentLocation = window.location.pathname;
             const menuItems = document.querySelectorAll('header nav ul li a');
+
             menuItems.forEach(item => {
                 if (item.getAttribute('href') === currentLocation || 
                     item.getAttribute('href') === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
                     item.classList.add('active');
                 }
             });
+
+            // Only apply slide transition on link click, not on page load
+            menuItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetUrl = event.currentTarget.getAttribute('href');
+                    
+                    document.body.classList.add('slide-exit');
+                    window.setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500);
+                });
+            });
+
+            // Slide enter effect
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                    document.body.classList.remove('slide-enter-active', 'slide-exit-active');
+                    document.body.classList.add('slide-enter');
+                    window.setTimeout(() => {
+                        document.body.classList.remove('slide-enter');
+                        document.body.classList.add('slide-enter-active');
+                    }, 1);
+                }
+            });
         });
     </script>
-    
 </body>
 </html>

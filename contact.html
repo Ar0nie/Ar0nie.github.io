@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <title>Contact</title>
 </head>
 <body>
     <header>
@@ -22,18 +23,30 @@
     <main>
         <section id="contact" class="section">
             <div class="container">
-                <div class="profile">
-                    <div class="profile-text">
-                        <h2>Contact</h2>
-                        <p>If you would like to get in touch, please reach out to me at <a href="mailto:aronbj@uio.no">aronbj@uio.no</a>.</p>
-                        <p>Alternatively, you can reach out to me by clicking on the icons.</p>
+                <h2 id="contact-me">Contact me or browse my projects on GitHub.</h2>
+                <div class="contact-cards">
+                    <div class="contact-card">
+                        <a href="mailto:aronbj@uio.no" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>aronbj@uio.no</p>
+                        </a>
                     </div>
-                    <div class="profile-image-icon">
-                        <a href="https://www.linkedin.com/in/aron-johannesen-304a92223/"><i class="fab fa-linkedin"></i></a>
+                    <div class="contact-card">
+                        <a href="https://www.linkedin.com/in/aron-johannesen-304a92223/" class="contact-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/aron-johannesen-304a92223/</p>
+                        </a>
                     </div>
-                    <div class="profile-image-icon" id="mail-icon">
-                        <a href="mailto:aronbj@uio.no"><i class='fa fa-envelope'></i></a>
+                    <div class="contact-card">
+                        <a href="https://github.com/Ar0nie?tab=repositories" class="contact-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <h3>GitHub</h3>
+                            <p>github.com/Ar0nie</p>
+                        </a>
                     </div>
+                </div>
             </div>
         </section>
     </main>
@@ -46,14 +59,39 @@
         document.addEventListener('DOMContentLoaded', function () {
             const currentLocation = window.location.pathname;
             const menuItems = document.querySelectorAll('header nav ul li a');
+
             menuItems.forEach(item => {
                 if (item.getAttribute('href') === currentLocation || 
                     item.getAttribute('href') === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
                     item.classList.add('active');
                 }
             });
+
+            // Only apply slide transition on link click, not on page load
+            menuItems.forEach(item => {
+                item.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    const targetUrl = event.currentTarget.getAttribute('href');
+                    
+                    document.body.classList.add('slide-exit');
+                    window.setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 500);
+                });
+            });
+
+            // Slide enter effect
+            window.addEventListener('pageshow', (event) => {
+                if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+                    document.body.classList.remove('slide-enter-active', 'slide-exit-active');
+                    document.body.classList.add('slide-enter');
+                    window.setTimeout(() => {
+                        document.body.classList.remove('slide-enter');
+                        document.body.classList.add('slide-enter-active');
+                    }, 1);
+                }
+            });
         });
     </script>
-    
 </body>
 </html>
