@@ -17,6 +17,7 @@ header {
 header .container {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 header nav ul {
@@ -37,14 +38,15 @@ header nav ul li a {
     font-weight: bold;
     padding: 5px 10px;
     border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 header nav ul li a.active,
 header nav ul li a:hover {
-    
     border: 1px solid #000;
     color: #000;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 .container {
@@ -53,7 +55,7 @@ header nav ul li a:hover {
     min-width: 800px;
     min-height: 50px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 .section {
@@ -141,6 +143,7 @@ footer {
     background-color: #eae7dc;
     text-align: center;
     padding: 20px 0;
+    align-items: center;
     
 }
 
@@ -161,12 +164,8 @@ body {
     margin: 0;
 }
 
-main {
-    flex: 1;
-}
-
 .contact-cards {
-    padding-top:100px;
+    padding-top:50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -177,6 +176,7 @@ main {
 .contact-card {
     background-color: #eae7dc;
     border: 1px solid #333;
+    padding: 20px;
     border-radius: 10px;
     padding: 20px;
     width: calc(33.333% - 40px);
@@ -184,6 +184,7 @@ main {
     text-align: center;
     transition: background-color 0.3s ease, transform 0.3s ease;
     word-wrap: break-word;
+    height: 250px;
 }
 
 .contact-card:hover {
@@ -215,6 +216,7 @@ main {
 
 #contact-me{
     text-align: center;
+    padding-top:10px;
 }
 
 .project-cards {
@@ -278,5 +280,28 @@ main {
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
     max-height: 4.5em; /* Limit the height of the paragraph */
     line-height: 1.5em; /* Adjust line height */
+}
+
+main {
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+    flex: 1;
+    position:center;
+}
+
+main.slide-enter {
+    transform: translateX(100%);
+}
+
+main.slide-enter-active {
+    transform: translateX(0);
+}
+
+main.slide-exit {
+    transform: translateX(0);
+}
+
+main.slide-exit-active {
+    transform: translateX(-100%);
 }
 
