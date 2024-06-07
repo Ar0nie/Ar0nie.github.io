@@ -323,6 +323,29 @@ body {
     filter: grayscale(0%); /* Remove grayscale on hover */
 }
 
+.fade-enter {
+    opacity: 0;
+}
+
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.container.fade-out {
+    opacity: 0;
+}
+
 main {
     flex: 1;
     position: center;

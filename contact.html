@@ -56,40 +56,39 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const currentLocation = window.location.pathname;
+            const mainContent = document.querySelector('main');
             const menuItems = document.querySelectorAll('header nav ul li a');
-    
+
+            // Apply fade-in effect on load
+            mainContent.classList.add('fade-enter');
+            window.setTimeout(() => {
+                mainContent.classList.remove('fade-enter');
+                mainContent.classList.add('fade-enter-active');
+            }, 1);
+
+            // Handle menu item click for fade-out effect
             menuItems.forEach(item => {
-                const targetUrl = item.getAttribute('href');
-    
-                if (targetUrl === currentLocation || 
-                    targetUrl === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
-                    item.classList.add('active');
-                }
-    
                 item.addEventListener('click', (event) => {
                     event.preventDefault();
-    
-                    // Supposed to hinder the page from reloading, but does trigger animation... 
-                    if (targetUrl === currentLocation || 
-                        targetUrl === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
+
+                    const targetUrl = item.getAttribute('href');
+                    const currentUrl = window.location.pathname;
+
+                    // Check if the target URL is the same as the current URL
+                    if (targetUrl === currentUrl || 
+                        targetUrl === currentUrl.substring(currentUrl.lastIndexOf('/') + 1)) {
                         return; // If same, do nothing
                     }
-    
-                    const mainContent = document.querySelector('main');
-                    mainContent.classList.add('slide-exit-active');
+
+                    // Fade-out effect
+                    mainContent.classList.remove('fade-enter-active');
+                    mainContent.classList.add('fade-exit-active');
+
                     window.setTimeout(() => {
                         window.location.href = targetUrl;
                     }, 500);
                 });
             });
-    
-            const mainContent = document.querySelector('main');
-            mainContent.classList.add('slide-enter');
-            window.setTimeout(() => {
-                mainContent.classList.remove('slide-enter');
-                mainContent.classList.add('slide-enter-active');
-            }, 1);
         });
     </script>
 </body>
