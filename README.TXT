@@ -1,2 +1,2 @@
-Just a small project and portfolio website. Feel free re-use any of the code!
+Just a small project and portfolio website. Feel free to re-use any of the code!
 
