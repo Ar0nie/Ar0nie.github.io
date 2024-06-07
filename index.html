@@ -7,6 +7,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <title>Home</title>
+    <style>
+        .draggable {
+            position: relative;
+            transition: transform 0.5s ease;
+            cursor: grab;
+            user-select: none; /* Prevents text selection */
+        }
+
+        .dragging {
+            cursor: grabbing;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,7 +36,7 @@
         <section id="home" class="section">
             <div class="container">
                 <h2 id="contact-me">Welcome!</h2>
-                <div class="profile">
+                <div class="profile draggable" id="draggable-card">
                     <div class="profile-text">
                         <h2>Aron Berger Johannesen</h2>
                         <p>I'm a software developer and computer science student enrolled at the University of Oslo. Welcome to my personal website where you can learn more about me and the projects I've contributed to.</p>
@@ -78,6 +90,45 @@
                         window.location.href = targetUrl;
                     }, 500);
                 });
+            });
+
+            // Draggable card functionality
+            const draggableCard = document.getElementById('draggable-card');
+            let isDragging = false;
+            let startX, startY, initialX, initialY;
+
+            draggableCard.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                startY = e.clientY;
+                initialX = draggableCard.offsetLeft;
+                initialY = draggableCard.offsetTop;
+                draggableCard.classList.add('dragging');
+
+                // Prevent text selection while dragging
+                document.body.style.userSelect = 'none';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const currentX = e.clientX;
+                    const currentY = e.clientY;
+                    const dx = currentX - startX;
+                    const dy = currentY - startY;
+
+                    draggableCard.style.transform = `translate(${dx}px, ${dy}px)`;
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                if (isDragging) {
+                    isDragging = false;
+                    draggableCard.classList.remove('dragging');
+                    draggableCard.style.transform = 'translate(0, 0)';
+
+                    // Re-enable text selection after dragging
+                    document.body.style.userSelect = '';
+                }
             });
         });
     </script>
