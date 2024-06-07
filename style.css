@@ -283,25 +283,7 @@ body {
 }
 
 main {
-    transition: transform 0.5s ease-in-out;
-    transform: translateX(0);
     flex: 1;
     position:center;
-}
-
-main.slide-enter {
-    transform: translateX(100%);
-}
-
-main.slide-enter-active {
-    transform: translateX(0);
-}
-
-main.slide-exit {
-    transform: translateX(0);
-}
-
-main.slide-exit-active {
-    transform: translateX(-100%);
 }
 
