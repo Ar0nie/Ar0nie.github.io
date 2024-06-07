@@ -70,7 +70,7 @@
                 item.addEventListener('click', (event) => {
                     event.preventDefault();
     
-                    // Check if the target URL is the same as the current URL
+                    // Supposed to hinder the page from reloading, but does trigger animation... 
                     if (targetUrl === currentLocation || 
                         targetUrl === currentLocation.substring(currentLocation.lastIndexOf('/'))) {
                         return; // If same, do nothing
