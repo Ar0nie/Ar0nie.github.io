@@ -11,7 +11,6 @@ html, body {
 header {
     background-color: #eae7dc;
     padding: 10px 0;
-    
 }
 
 header .container {
@@ -64,7 +63,7 @@ header nav ul li a:hover {
 
 .profile {
     display: flex;
-    max-width:1200px;
+    max-width: 1200px;
     align-items: center;
     justify-content: space-between;
     background-color: #eae7dc;
@@ -113,25 +112,25 @@ header nav ul li a:hover {
     height: auto;
 }
 
-.profile-image-icon a{
+.profile-image-icon a {
     border-radius: 10px;
     color: #333;
     width: 300px;
-    padding:10px;
-    padding-left:20px;
-    font-size:10em;
+    padding: 10px;
+    padding-left: 20px;
+    font-size: 10em;
     height: auto;
 }
 
-.profile-image-icon a:hover{
+.profile-image-icon a:hover {
     color: #0073b1;
 }
 
-#mail-icon{
-    padding-top:20px;
+#mail-icon {
+    padding-top: 20px;
 }
 
-#contact{
+#contact {
     width: 90%;
     max-width: 1000px;
     min-width: 800px;
@@ -144,7 +143,6 @@ footer {
     text-align: center;
     padding: 20px 0;
     align-items: center;
-    
 }
 
 footer p {
@@ -165,7 +163,7 @@ body {
 }
 
 .contact-cards {
-    padding-top:50px;
+    padding-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -201,6 +199,11 @@ body {
 .contact-link i {
     font-size: 2em;
     margin-bottom: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.contact-card:hover .contact-link i {
     color: #0073b1;
 }
 
@@ -214,17 +217,18 @@ body {
     word-break: break-word;
 }
 
-#contact-me{
+#contact-me {
     text-align: center;
-    padding-top:10px;
+    padding-top: 10px;
 }
-#contact-me-1{
+
+#contact-me-1 {
     text-align: center;
-    padding-top:40px;
+    padding-top: 40px;
 }
 
 .project-cards {
-    padding-top:50px;
+    padding-top: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -246,6 +250,7 @@ body {
     justify-content: space-between;
     height: 400px; /* Set a fixed height, but maybe change height? */
     overflow: hidden;
+    transition: all 0.3s ease;
 }
 
 .project-card:hover {
@@ -266,8 +271,8 @@ body {
     width: 100%;
     max-width: fit-content;
     height: auto;
-    max-height: 150px; 
-    object-fit: cover; 
+    max-height: 150px;
+    object-fit: cover;
     border-radius: 5px;
     margin-bottom: 10px;
 }
@@ -280,14 +285,45 @@ body {
 .project-link p {
     font-size: 1.2em;
     word-break: break-word;
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    max-height: 4.5em; 
-    line-height: 1.5em; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 4.5em;
+    line-height: 1.5em;
+}
+
+.project-link img {
+    width: 100%;
+    max-width: fit-content;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    filter: grayscale(100%); /* Initial grayscale effect */
+    transition: filter 0.3s ease; /* Smooth transition */
+}
+
+.project-link img:hover {
+    filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+.project-card img {
+    width: 100%;
+    max-width: fit-content;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    filter: grayscale(100%); /* Initial grayscale effect */
+    transition: filter 0.3s ease; /* Smooth transition for the image */
+}
+
+.project-card:hover img {
+    filter: grayscale(0%); /* Remove grayscale on hover */
 }
 
 main {
     flex: 1;
-    position:center;
+    position: center;
 }
-
