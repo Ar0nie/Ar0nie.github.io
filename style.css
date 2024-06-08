@@ -1,3 +1,4 @@
+@media (min-width: 600px){
 html, body {
     font-family: 'Roboto', sans-serif;
     background-color: #eae7dc;
@@ -148,7 +149,7 @@ footer {
 footer p {
     margin: 0;
     font-size: 1em;
-    color: #333;
+    color: #eae7dc;
 }
 
 html {
@@ -350,6 +351,7 @@ main {
     flex: 1;
     position: center;
 }
+}
 
 /* All of the above is intended for the desktop styling */
 
@@ -361,6 +363,13 @@ main {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
+        background-color: #eae7dc;
+    }
+    main{
+        background-color: #eae7dc;
+    }
+    footer{
+        background-color: #eae7dc;
     }
     
     .container {
@@ -429,13 +438,11 @@ main {
         justify-content: space-around;
         flex-wrap: wrap;
     }
-    
     .contact-card, .project-card {
         flex: 0 1 calc(33.333% - 1rem);
         margin: 0.5rem;
         text-align: center;
     }
-    
     .contact-link, .project-link {
         color: inherit;
         text-decoration: none;
@@ -449,6 +456,7 @@ main {
     .container {
         width: 100%;
         padding: 0 1rem;
+
     }
     header {
         position: fixed;
