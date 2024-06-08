@@ -372,6 +372,7 @@ main {
     main {
         padding-top: 6rem; /* Add padding to main content to account for fixed header */
         text-align: center;
+        padding-right:1000px;
     }
 
     header nav ul {
