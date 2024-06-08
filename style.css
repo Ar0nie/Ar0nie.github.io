@@ -381,6 +381,7 @@ main {
         background-color: #eae7dc;
         color: black;
         padding: 1rem 0;
+        text-align: center;
     }
     
     header nav ul {
@@ -503,12 +504,10 @@ main {
         box-sizing: border-box;
         width: 100%;
     }
-    /* Ensure images inside cards are responsive */
     .project-card img {
-        max-width: 100%;
+        max-width: 300px;
         height: auto;
     }
-    /* Prevent Horizontal Scrolling */
     body, html {
         overflow-x: hidden;
     }
