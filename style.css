@@ -351,13 +351,27 @@ main {
     position: center;
 }
 
-/* All of the above is used for the desktop styling */
+/* All of the above is intended for the desktop styling */
 
 /* Below is the mobile styling */
 
+/* Phone-Specific Styles */
 @media (max-width: 600px) {
     .container {
-        width: 90%;
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    main {
+        padding-top: 6rem; /* Add padding to main content to account for fixed header */
+        text-align: center;
     }
 
     header nav ul {
@@ -371,24 +385,46 @@ main {
 
     .profile {
         flex-direction: column;
-        text-align: center;
+        align-items: center;
     }
 
     .profile-text {
         margin-right: 0;
         margin-bottom: 1rem;
+        padding: 0 1rem;
     }
 
     .profile-image img {
         max-width: 100px;
     }
 
+    .contact-cards, .project-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .contact-card, .project-card {
         flex: 0 1 100%;
+        max-width: 100%;
+        margin: 0.5rem 0;
     }
 
     .contact-card a, .project-card a {
         display: block;
         margin: 0.5rem 0;
+        padding: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    /* Ensure images inside cards are responsive */
+    .project-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Prevent Horizontal Scrolling */
+    body, html {
+        overflow-x: hidden;
     }
 }
