@@ -351,3 +351,44 @@ main {
     position: center;
 }
 
+/* All of the above is used for the desktop styling */
+
+/* Below is the mobile styling */
+
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-text {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .profile-image img {
+        max-width: 100px;
+    }
+
+    .contact-card, .project-card {
+        flex: 0 1 100%;
+    }
+
+    .contact-card a, .project-card a {
+        display: block;
+        margin: 0.5rem 0;
+    }
+}
